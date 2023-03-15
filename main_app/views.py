@@ -1,13 +1,6 @@
 from django.shortcuts import render
-
+from .models import Bunny
 # Create your views here.
-
-bunnies = [
-    {'name': 'Cinnabun', 'breed': 'Holland Lop',
-        'description': 'adorable bundle of joy', 'age': 3},
-    {'name': 'Truffle', 'breed': 'Lionhead',
-        'description': 'energetic little fluff ball', 'age': 2},
-]
 
 
 def home(request):
@@ -18,4 +11,9 @@ def about(request):
     return render(request, 'about.html')
 
 def bunnies_index(request):
+    bunnies = Bunny.objects.all()
     return render(request, 'bunnies/index.html', {'bunnies': bunnies})
+
+def bunnies_detail(request, bunny_id):
+    bunny = Bunny.objects.get(id=bunny_id)
+    return render(request, 'bunnies/detail.html', {'bunny': bunny})
