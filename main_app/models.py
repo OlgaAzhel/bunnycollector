@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Bunny(models.Model):
@@ -9,3 +10,5 @@ class Bunny(models.Model):
 # Changing this instance method does not impact the database, therefore no migrations necessary
     def __str__(self):
         return f'{self.name} ({self.id})'
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'cat_id': self.id})
