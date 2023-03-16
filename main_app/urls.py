@@ -13,5 +13,6 @@ urlpatterns = [
          views.BunnyUpdate.as_view(), name='bunnies_update'),
     path('bunnies/<int:pk>/delete/',
          views.BunnyDelete.as_view(), name='bunnies_delete'),
+    path('bunnies/<int:bunny_id>/add_feeding', views.add_feeding, name='add_feeding'),
 
 ]
